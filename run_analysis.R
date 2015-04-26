@@ -76,24 +76,3 @@ run_analysis<-function(){
         
         write.table(tx, file = "results.txt", append = FALSE, quote = TRUE, sep = ",", eol = "\n", na = "NA", dec = ".", row.names = FALSE, col.names = TRUE)
 }
-
-test<-function(){
-#         df1 = data.frame(CustomerId=c(1:6),Product=c(rep("Toaster",3),rep("Radio",3)))
-#         df2 = data.frame(CustomerId=c(2,4,6),State=c("Alabama","Ohio","CA"))
-#         tx<-merge(df1,df2,by = "CustomerId", all.x=TRUE)
-#         tx
-        df_activity_names <- read.table("Dataset/Data/activity_labels.txt",header = FALSE, sep = "",blank.lines.skip = TRUE)
-        names(df_activity_names)<- c("activity","name")
-        
-        print(df_activity_names)
-        dx = data.frame(activity=c(1:6),c1=c(rep("Toaster",3),rep("Radio",3)))
-        #dx$activity[df_activity_names$activity == dx$activity] <- df_activity_names$name
-        #dx$activity <- replace(dx$activity, dx$activity == df_activity_names$activity, df_activity_names$name)
-        #dx
-        #dx <- lapply(dx, function(x){replace(dx$activity, dx$activity == df_activity_names$activity, df_activity_names$name)})
-        #df[,c(1,3,2,4,5:50)]
-        dx$activity[dx$activity == df_activity_names$activity] <- df_activity_names$name
-        tx<-merge(dx,df_activity_names,by = "activity", all.x=TRUE)
-        tx<-tx[,c(3,2)]
-        tx
-}
